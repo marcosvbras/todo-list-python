@@ -3,11 +3,7 @@ from flask import Flask, jsonify
 
 app = Flask('todoapp')
 
-tasks = [
-    {
-        'id': 1, 'title': 'Título', 'description': 'Descrição', 'state': False
-    }
-]
+tasks = []
 
 
 @app.route('/tasks')

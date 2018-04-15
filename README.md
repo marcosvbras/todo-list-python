@@ -8,6 +8,7 @@ This is a simple TO DO List created with what I learned on course [Do Zero ao De
 
 This project covers the following concepts:
 - Python environments with Pipenv
-- TDD with PyTest
+- Test Driven Development with PyTest
 - Starting with Flask framework
-- Starting with Heroku
+- Continuous Integration with Travis
+- Continuous Deployment with Heroku

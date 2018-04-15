@@ -1,5 +1,5 @@
 # coding=utf-8
-from todo import app, tasks
+from todo import app
 
 def test_list_tasks_must_return_status_200():
     with app.test_client() as client:
@@ -11,24 +11,6 @@ def test_list_tasks_must_have_json_format():
     with app.test_client() as client:
         response = client.get('/tasks')
         assert response.content_type == 'application/json'
-
-
-def test_empty_todo_list_must_return_empty_list():
-    with app.test_client() as client:
-        response = client.get('/tasks')
-        assert response.data == b'[]\n'
-
-
-def test_non_empty_todo_list_must_return_content():
-    tasks.append({'id': 1, 'titulo': 'tarefa 1',
-                    'descricao': 'tarefa de numero 1', 'estado': False})
-    with app.test_client() as client:
-        response = client.get('/tasks')
-        assert response.data == (b'[\n  {\n    "descricao": '
-                                 b'"tarefa de numero 1", \n    '
-                                 b'"estado": false, \n    '
-                                 b'"id": 1, \n    '
-                                 b'"titulo": "tarefa 1"\n  }\n]\n')
 
 
 def test_create_task_accepts_method_post():
@@ -52,7 +34,6 @@ def test_create_task_returns_created_task():
         )
 
         data = json.loads(response.data.decode('utf-8'))
-        assert data['id'] == 1
         assert data['title'] == 'The Best Title'
         assert data['description'] == 'The Best Description'
         assert data['done'] == False
@@ -65,8 +46,8 @@ def test_create_task_must_returns_201_status_code():
             '/tasks',
             data=json.dumps(
                 {
-                    'title': 'The Best Title',
-                    'description': 'The Best Description'
+                    'title': 'The Incredible Title',
+                    'description': 'The Incredible Description'
                 }
             ),
             content_type='application/json'

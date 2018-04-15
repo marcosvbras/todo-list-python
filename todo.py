@@ -27,4 +27,5 @@ def create():
 
     return jsonify(task), 201
 
-app.run()
+if __name__ == '__main__':
+    app.run()

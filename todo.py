@@ -26,6 +26,3 @@ def create():
     task = tasks_dao.create(data)
 
     return jsonify(task), 201
-
-if __name__ == '__main__':
-    app.run()

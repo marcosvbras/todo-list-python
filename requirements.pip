@@ -1,0 +1,7 @@
+click==6.7
+flask==0.12.2
+itsdangerous==0.24
+jinja2==2.10
+markupsafe==1.0
+pymongo==3.6.1
+werkzeug==0.14.1

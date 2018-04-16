@@ -21,7 +21,7 @@ Starting from what has been taught, I improved the API with **MongoDB** persiste
 
 This project was developed with **Python version 3.6**, so, for a correct running, it is recommended to install this one.
 
-First, it is required to install all project dependencies. You can use [PyTest](https://docs.pytest.org/en/latest/) or [Virtualenv](https://virtualenv.pypa.io/en/stable/). If you are using **Pipenv**, use the following command to install from **Pipfile**:
+First, it is required to install all project dependencies. You can use [Pipenv](https://github.com/pypa/pipenv) or [Virtualenv](https://virtualenv.pypa.io/en/stable/). If you are using **Pipenv**, use the following command to install from **Pipfile**:
 
 ```bash
 $ pipenv install
@@ -68,10 +68,50 @@ $ pip install -r dev-requirements.pip
 To debug endpoints, you can use [HTTPie](https://httpie.org/) as following:
 ```bash
 $ http http://127.0.0.1:5000/tasks
+[
+  {
+    "_id": {
+      "$oid": "5ad3d924e3bdea6ccf9d9d3e"
+    },
+    "description": "The Best Description",
+    "done": false,
+    "title": "The Best Title"
+  },
+  {
+    "_id": {
+      "$oid": "5ad3d8fae3bdea6c41d571f4"
+    },
+    "description": "The Incredible Description",
+    "done": false,
+    "title": "The Incredible Title"
+  }
+]
+```
+
+```bash
 $ http POST http://127.0.0.1:5000/tasks title=Test description=Title
+HTTP/1.0 201 CREATED
+Content-Length: 123
+Content-Type: application/json
+Date: Mon, 16 Apr 2018 00:23:45 GMT
+Server: Werkzeug/0.14.1 Python/3.6.2
+
+{
+  "_id": {
+    "$oid": "5ad3ed11e3bdea06aa7afa06"
+  },
+  "description": "Title",
+  "done": false,
+  "title": "Test"
+}
 ```
 
 To run the tests, you can use [PyTest](https://docs.pytest.org/en/latest/) as following:
 ```bash
 $ python -m pytest
+...
+collected 7 items
+
+test_todo.py .......                                                    [100%]
+========================== 7 passed in 1.32 seconds ==========================
 ```

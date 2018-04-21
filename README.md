@@ -20,14 +20,10 @@ This project covers the following concepts:
 Starting from what has been taught, I improved the API with **MongoDB** persistence.
 
 ## Environment
+### API
 All code was written with **Python 3.6**, so, for a correct running, it is recommended to install this one.
 
 After Python installed, it is required to install all dependencies. You can use [Pipenv](https://github.com/pypa/pipenv) or [Virtualenv](https://virtualenv.pypa.io/en/stable/). If you are using **Pipenv**, use the following command to install from **Pipfile**:
-
-## How To Run
-
-### API
-First, it is required to install all project dependencies. You can use [Pipenv](https://github.com/pypa/pipenv) or [Virtualenv](https://virtualenv.pypa.io/en/stable/). If you are using **Pipenv**, use the following command to install from **Pipfile**:
 
 ```bash
 $ pipenv install
@@ -46,7 +42,6 @@ $ pip install -r requirements.pip
 ```
 
 ### Database
-
 Install [MongoDB](https://www.mongodb.com/) in your machine and be sure **MongoDB** process is running.
 
 ## How to run
@@ -57,7 +52,8 @@ $ python todo.py
 ```
 
 API Endpoints:
-- `/tasks` **POST** and **GET**
+- `GET /tasks`: Return all tasks available
+- `POST /tasks`: Create a new task
 
 ## Testing (Optional)
 

@@ -22,16 +22,17 @@ def get(pk):
 
 @app.route('/tasks', methods=['POST'])
 def create():
-    data = request.json
-    title = data.get('title', None)
-    description = data.get('description', None)
+    if request.method == 'POST':
+        data = request.json
+        title = data.get('title', None)
+        description = data.get('description', None)
 
-    if not title or not description:
-        abort(400)
+        if not title or not description:
+            return "The fields 'title' and 'description' are required", 400
 
-    task = tasks_dao.create(data)
+        task = tasks_dao.create(data)
 
-    return jsonify(task), 201
+        return jsonify(task), 201
 
 
 if __name__ == '__main__':

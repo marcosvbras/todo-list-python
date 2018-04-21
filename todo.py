@@ -14,6 +14,12 @@ def list():
     return jsonify(tasks_dao.list()), 200
 
 
+@app.route('/tasks/<pk>', methods=['GET', 'PUT'])
+def get(pk):
+    if request.method == 'GET':
+        return jsonify(tasks_dao.read(pk))
+
+
 @app.route('/tasks', methods=['POST'])
 def create():
     data = request.json
@@ -26,3 +32,7 @@ def create():
     task = tasks_dao.create(data)
 
     return jsonify(task), 201
+
+
+if __name__ == '__main__':
+    app.run()

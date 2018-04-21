@@ -6,3 +6,5 @@ install:
   - pipenv install --dev
 script:
   - pytest
+services:
+  - mongodb

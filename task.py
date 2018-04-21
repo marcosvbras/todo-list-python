@@ -21,17 +21,21 @@ class TaskDAO:
         inserted_id = self.task_collection.insert_one(task).inserted_id
         task = self.task_collection.find_one({ '_id': ObjectId(inserted_id) })
 
-        return json.loads(json_util.dumps(task))
+        return self.to_json(task)
 
     def list(self):
         tasks = self.task_collection.find().sort('done', pymongo.ASCENDING)
-        return json.loads(json_util.dumps(tasks))
+        return self.to_json(tasks)
 
-    def read(self):
-        pass
+    def read(self, object_id):
+        task = self.task_collection.find_one({ '_id': ObjectId(object_id)})
+        return self.to_json(task)
 
     def update(self):
         pass
 
     def delete(self):
         pass
+
+    def to_json(self, data):
+        return json.loads(json_util.dumps(data))
